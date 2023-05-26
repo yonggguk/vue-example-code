@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js sample</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+<div id="app">
+    <h1 v-bind:style="{textAlign : centerAlign}">숫자 버튼 만들기와 클릭 이벤트 처리</h1>
+    <div v-bind:style="{textAlign : centerAlign}">
+        <button v-for="n in 9" @click="imgprint(n)">{{n}}</button>
+    </div>
+    <hr>
+    <div v-bind:style="{textAlign : centerAlign}">
+        <img v-bind:src="filename">
+    </div>
+</div>
+<script>
+    const {createApp} = Vue
+    createApp({
+        data() {
+            return {
+                filename: '',
+                centerAlign: "center"
+            }
+        },
+        methods: {
+            imgprint: function (n) {
+                this.filename = "images/" + n + ".jpg"
+            }
+        }
+    }).mount('#app')
+</script>
+</body>
+</html>
